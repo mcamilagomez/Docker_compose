@@ -1,0 +1,22 @@
+version: '3.8'
+
+services:
+  proxy:
+    build: ./proxy
+    ports:
+      - "80:80"
+    depends_on:
+      - auth
+      - notes
+
+  auth:
+    build:
+      context: ./auth
+    ports:
+      - "5001:5001"
+
+  notes:
+    build:
+      context: ./notes
+    ports:
+      - "5002:5002"
